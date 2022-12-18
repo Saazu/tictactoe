@@ -1,0 +1,5 @@
+.square {
+  border: pink solid 1px;
+  background-color: pink;
+  cursor: pointer;
+}
