@@ -2,9 +2,7 @@ import boardHasEmptyCell from "./boardHasEmptyCell";
 
 export default function checkWinner(
   matrix: Array<Array<string>>,
-  rowsNum: number,
-  colsNum: number,
-  numToWin: number,
+  numCellsPerRow: number,
   lastRow: number,
   lastCol: number
 ) {
@@ -13,11 +11,11 @@ export default function checkWinner(
   const lastValue: string = matrix[lastRow][lastCol];
 
   //check Horizontal
-  for (let c = 0; c < colsNum; c++) {
+  for (let c = 0; c < numCellsPerRow; c++) {
     let currentValue = matrix[lastRow][c];
     if (currentValue === lastValue) match++;
     else match = 0;
-    if (match === numToWin) {
+    if (match === numCellsPerRow) {
       winner = lastValue;
       break;
     }
@@ -26,11 +24,11 @@ export default function checkWinner(
 
   match = 0;
   //check Vertical
-  for (let r = 0; r < rowsNum; r++) {
+  for (let r = 0; r < numCellsPerRow; r++) {
     let currentValue = matrix[r][lastCol];
     if (currentValue === lastValue) match++;
     else match = 0;
-    if (match === numToWin) {
+    if (match === numCellsPerRow) {
       winner = lastValue;
       break;
     }
@@ -39,13 +37,17 @@ export default function checkWinner(
 
   //check diagonal top-left to bottom-right - include middle
   match = 0;
-  for (let r = 0; r <= rowsNum - numToWin; r++) {
+  for (let r = 0; r <= numCellsPerRow - numCellsPerRow; r++) {
     let rowPosition = r;
-    for (let column = 0; column < colsNum && rowPosition < rowsNum; column++) {
+    for (
+      let column = 0;
+      column < numCellsPerRow && rowPosition < numCellsPerRow;
+      column++
+    ) {
       const currentValue = matrix[rowPosition][column];
       if (currentValue === lastValue) match++;
       else match = 0;
-      if (match === numToWin) {
+      if (match === numCellsPerRow) {
         winner = lastValue;
         break;
       }
@@ -57,13 +59,17 @@ export default function checkWinner(
 
   //check diagonal top-left to bottom-right - after middle
   match = 0;
-  for (let c = 1; c <= colsNum - numToWin; c++) {
+  for (let c = 1; c <= numCellsPerRow - numCellsPerRow; c++) {
     let columnPosition = c;
-    for (let row = 0; row < rowsNum && columnPosition < colsNum; row++) {
+    for (
+      let row = 0;
+      row < numCellsPerRow && columnPosition < numCellsPerRow;
+      row++
+    ) {
       let currentValue = matrix[row][columnPosition];
       if (currentValue === lastValue) match++;
       else match = 0;
-      if (match === numToWin) {
+      if (match === numCellsPerRow) {
         winner = lastValue;
         break;
       }
@@ -75,17 +81,23 @@ export default function checkWinner(
 
   //check diagonal bottom-left to top-right - include middle
   match = 0;
-  for (let r = rowsNum - 1; r >= rowsNum - numToWin - 1; r--) {
+  for (
+    let r = numCellsPerRow - 1;
+    r >= numCellsPerRow - numCellsPerRow - 1;
+    r--
+  ) {
     let rowPosition = r;
     for (
       let column = 0;
-      column < colsNum && rowPosition < rowsNum && rowPosition >= 0;
+      column < numCellsPerRow &&
+      rowPosition < numCellsPerRow &&
+      rowPosition >= 0;
       column++
     ) {
       let currentValue = matrix[rowPosition][column];
       if (currentValue === lastValue) match++;
       else match = 0;
-      if (match === numToWin) {
+      if (match === numCellsPerRow) {
         winner = lastValue;
         break;
       }
@@ -97,13 +109,13 @@ export default function checkWinner(
 
   //check diagonal bottom-left to top-right - after middle
   match = 0;
-  for (let c = 1; c < colsNum; c++) {
+  for (let c = 1; c < numCellsPerRow; c++) {
     let columnPosition = c;
     for (
-      let row = rowsNum - 1;
-      row < rowsNum &&
+      let row = numCellsPerRow - 1;
+      row < numCellsPerRow &&
       row >= 0 &&
-      columnPosition < colsNum &&
+      columnPosition < numCellsPerRow &&
       columnPosition >= 1;
       row--
     ) {
@@ -111,7 +123,7 @@ export default function checkWinner(
       let currentValue = matrix[row][columnPosition];
       if (currentValue === lastValue) match++;
       else match = 0;
-      if (match === numToWin) {
+      if (match === numCellsPerRow) {
         winner = lastValue;
         break;
       }
@@ -121,7 +133,7 @@ export default function checkWinner(
   }
   if (winner !== "") return winner;
 
-  if (boardHasEmptyCell(matrix, rowsNum, colsNum) === false) {
+  if (boardHasEmptyCell(matrix, numCellsPerRow, numCellsPerRow) === false) {
     winner = "-1";
   }
 

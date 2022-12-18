@@ -23,8 +23,6 @@ const useTicTacToe = (rowLength: number) => {
     const winner = checkWinner(
       gameMatrix,
       rowLength,
-      rowLength,
-      rowLength,
       currentRow,
       currentColumn
     );
