@@ -54,7 +54,7 @@ export default function checkWinner(
     }
   }
 
-  if (moveCount === Math.pow(numCellsPerRow, 2) - 1) {
+  if (moveCount === Math.pow(numCellsPerRow, 2)) {
     return "Draw";
   }
 

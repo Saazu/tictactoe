@@ -1,12 +1,7 @@
 import { useState } from "react";
 import checkWinner from "../utils/checkWinner";
 import useLocalStorage from "./useLocalStorage";
-import { GameResultState } from "../common/types.typedef";
-
-enum PlayerMove {
-  X = "X",
-  O = "O",
-}
+import { GameResultState, PlayerMove } from "../common/types.typedef";
 
 /**
  *
