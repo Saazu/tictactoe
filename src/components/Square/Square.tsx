@@ -20,6 +20,7 @@ function Square({ value, setValue, row, column, disable }: SquareProps) {
 
   function handleClick() {
     if (!clicked) {
+      console.log("Clicked", row, column);
       setClicked(true);
       setValue(row, column);
     }

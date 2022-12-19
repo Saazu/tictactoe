@@ -36,16 +36,7 @@ function Board({ rowLength, stopGame }: BoardProps) {
     restartGame();
   }
 
-  function getWinner(): string {
-    if (winner) {
-      if (winner === "-1") {
-        return "Draw";
-      } else {
-        return winner;
-      }
-    }
-    return "No one yet";
-  }
+  const disableSquare = winner !== "No winner yet";
 
   function generateBoard() {
     const board = [];
@@ -58,7 +49,7 @@ function Board({ rowLength, stopGame }: BoardProps) {
             row={r}
             column={c}
             value={gameMatrix[r][c]}
-            disable={Boolean(winner)}
+            disable={disableSquare}
             setValue={handlePlayerMove}
           />
         );
@@ -74,7 +65,7 @@ function Board({ rowLength, stopGame }: BoardProps) {
 
   return (
     <div className="board">
-      <div className="game-state">Winner: {getWinner()}</div>
+      <div className="game-state">Winner: {winner}</div>
       <div>Current player: {currentTurn}</div>
       {generateBoard()}
       <button className="restart" onClick={playNewGame}>
