@@ -1,5 +1,6 @@
 import boardHasEmptyCell from "./boardHasEmptyCell";
 
+// TO DO: Optimise thus function
 export default function checkWinner(
   matrix: Array<Array<string>>,
   numCellsPerRow: number,

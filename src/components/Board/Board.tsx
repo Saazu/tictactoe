@@ -36,6 +36,17 @@ function Board({ rowLength, stopGame }: BoardProps) {
     restartGame();
   }
 
+  function getWinner(): string {
+    if (winner) {
+      if (winner === "-1") {
+        return "Draw";
+      } else {
+        return winner;
+      }
+    }
+    return "No one yet";
+  }
+
   function generateBoard() {
     const board = [];
     for (let r = 0; r < rowLength; r++) {
@@ -63,9 +74,7 @@ function Board({ rowLength, stopGame }: BoardProps) {
 
   return (
     <div className="board">
-      <div className="game-state">
-        Winner: {winner ? winner : "No one yet!"}
-      </div>
+      <div className="game-state">Winner: {getWinner()}</div>
       <div>Current player: {currentTurn}</div>
       {generateBoard()}
       <button className="restart" onClick={playNewGame}>
