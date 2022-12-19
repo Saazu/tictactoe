@@ -85,10 +85,10 @@ function Board({ rowLength, stopGame }: BoardProps) {
       <div className="game-state">
         <h2>Winner: {winner ? winner : "No one yet!"}</h2>
       </div>
+      {generateBoard()}
       <div className="current-player">
         <h3>Current Player: {currentTurn}</h3>
       </div>
-      {generateBoard()}
       <button className="btn" onClick={playNewGame}>
         Restart
       </button>
