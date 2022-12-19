@@ -1,6 +1,7 @@
 import { useState } from "react";
 import checkWinner from "../utils/checkWinner";
 import useLocalStorage from "./useLocalStorage";
+import { GameResultState } from "../common/types.typedef";
 
 enum PlayerMove {
   X = "X",
@@ -14,7 +15,7 @@ enum PlayerMove {
  */
 const useTicTacToe = (rowLength: number) => {
   const [currentTurn, setCurrentTurn] = useState<PlayerMove>(PlayerMove.X);
-  const [winner, setWinner] = useState("No winner yet");
+  const [winner, setWinner] = useState<GameResultState>("No Winner Yet");
   const [restart, setRestart] = useState(false);
   const [gameMatrix, setGameMatrix] = useState(
     new Array(rowLength)
@@ -37,7 +38,6 @@ const useTicTacToe = (rowLength: number) => {
       currentColumn,
       currentMoveCount
     );
-    console.log(`the winner is: ${winner}`);
     // TO DO: update function to use deep copy of matrix
 
     setGameMatrix(gameMatrix);

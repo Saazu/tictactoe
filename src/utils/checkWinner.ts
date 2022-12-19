@@ -1,12 +1,14 @@
+import { GameResultState, PlayerMove } from "../common/types.typedef";
+
 // TO DO: Optimise thus function
 export default function checkWinner(
-  matrix: Array<Array<string>>,
+  matrix: Array<Array<PlayerMove>>,
   numCellsPerRow: number,
   currentRow: number,
   currentColumn: number,
   moveCount: number
-): string {
-  const currentMove: string = matrix[currentRow][currentColumn];
+): GameResultState {
+  const currentMove: PlayerMove = matrix[currentRow][currentColumn];
 
   //check column
   for (let i = 0; i < numCellsPerRow; i++) {
@@ -56,5 +58,5 @@ export default function checkWinner(
     return "Draw";
   }
 
-  return "No winner yet";
+  return "No Winner Yet";
 }

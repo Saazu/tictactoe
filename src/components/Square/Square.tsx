@@ -7,9 +7,17 @@ type SquareProps = {
   row: number;
   column: number;
   disable: boolean;
+  textSize: string;
 };
 
-function Square({ value, setValue, row, column, disable }: SquareProps) {
+function Square({
+  value,
+  setValue,
+  row,
+  column,
+  disable,
+  textSize,
+}: SquareProps) {
   const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
@@ -20,7 +28,6 @@ function Square({ value, setValue, row, column, disable }: SquareProps) {
 
   function handleClick() {
     if (!clicked) {
-      console.log("Clicked", row, column);
       setClicked(true);
       setValue(row, column);
     }
@@ -28,7 +35,7 @@ function Square({ value, setValue, row, column, disable }: SquareProps) {
 
   return (
     <button className="square" onClick={handleClick}>
-      {value}
+      <p style={{ fontSize: textSize, fontWeight: 700 }}>{value}</p>
     </button>
   );
 }

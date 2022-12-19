@@ -1,20 +1,3 @@
 .app {
   text-align: center;
 }
-
-.game-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-}
-
-.instructions {
-  text-align: center;
-}
-
-.matrix-select {
-  text-align: center;
-}
-

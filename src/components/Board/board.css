@@ -2,23 +2,20 @@
   display: grid;
   box-sizing: border-box;
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-  grid-gap: 1vw;
+  grid-gap: 0.5vw;
   max-width: 600px;
   width: 96vw;
   max-height: 600px;
   height: 96vw;
-  margin: 0 auto;
+  margin: 1rem 0rem;
+  font-weight: 700;
 }
 
-.board {
-  
-}
 
 .game-state {
 
 }
 
-.restart {
+.current-player {
 
 }
-

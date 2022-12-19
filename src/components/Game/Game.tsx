@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Board from "../Board/Board";
 import InitGame from "../InitGame/InitGame";
+import "./game.css";
 
 function Game() {
   const [rowLength, setRowLength] = useState(3);
@@ -18,9 +19,15 @@ function Game() {
   }
 
   return playingGame ? (
-    <Board rowLength={rowLength} stopGame={stopGame} />
+    <div className="game-container">
+      <Board rowLength={rowLength} stopGame={stopGame} />
+    </div>
   ) : (
-    <InitGame startGame={startGame} setBoardSize={setBoardSize} />
+    <InitGame
+      startGame={startGame}
+      setBoardSize={setBoardSize}
+      rowLength={rowLength}
+    />
   );
 }
 
