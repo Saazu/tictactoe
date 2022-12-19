@@ -10,7 +10,7 @@ export default function checkWinner(
 
   //check column
   for (let i = 0; i < numCellsPerRow; i++) {
-    if (matrix[currentColumn][i] !== currentMove) {
+    if (matrix[currentRow][i] !== currentMove) {
       break;
     }
     if (i === numCellsPerRow - 1) {
@@ -20,7 +20,7 @@ export default function checkWinner(
 
   // check row
   for (let i = 0; i < numCellsPerRow; i++) {
-    if (matrix[i][currentRow] !== currentMove) {
+    if (matrix[i][currentColumn] !== currentMove) {
       break;
     }
     if (i === numCellsPerRow - 1) {
@@ -52,7 +52,7 @@ export default function checkWinner(
     }
   }
 
-  if (moveCount === Math.pow(numCellsPerRow, 2)) {
+  if (moveCount === Math.pow(numCellsPerRow, 2) - 1) {
     return "Draw";
   }
 

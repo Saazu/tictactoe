@@ -2,13 +2,18 @@ import { useState } from "react";
 import checkWinner from "../utils/checkWinner";
 import useLocalStorage from "./useLocalStorage";
 
+enum PlayerMove {
+  X = "X",
+  O = "O",
+}
+
 /**
  *
  * @param {Number} rowLength : initial loadingstate
  * @returns
  */
 const useTicTacToe = (rowLength: number) => {
-  const [currentTurn, setCurrentTurn] = useState("X");
+  const [currentTurn, setCurrentTurn] = useState<PlayerMove>(PlayerMove.X);
   const [winner, setWinner] = useState("No winner yet");
   const [restart, setRestart] = useState(false);
   const [gameMatrix, setGameMatrix] = useState(
@@ -33,9 +38,12 @@ const useTicTacToe = (rowLength: number) => {
       currentMoveCount
     );
     console.log(`the winner is: ${winner}`);
-    // TO DO: update function to use deep copy of arrays
+    // TO DO: update function to use deep copy of matrix
+
     setGameMatrix(gameMatrix);
-    setCurrentTurn((currentTurn) => (currentTurn === "X" ? "O" : "X"));
+    setCurrentTurn((currentTurn) =>
+      currentTurn === PlayerMove.X ? PlayerMove.O : PlayerMove.X
+    );
     setWinner(winner);
     setLocalStorageState({ gameMatrix, winner, currentTurn, moveCount });
   }
