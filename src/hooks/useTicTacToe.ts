@@ -1,7 +1,11 @@
 import { useState } from "react";
 import checkWinner from "../utils/checkWinner";
 import useLocalStorage from "./useLocalStorage";
-import { GameResultState, PlayerMove } from "../common/types.typedef";
+import {
+  GameResultState,
+  PlayerMove,
+  GameMatrix,
+} from "../common/types.typedef";
 
 /**
  *
@@ -12,7 +16,7 @@ const useTicTacToe = (rowLength: number) => {
   const [currentTurn, setCurrentTurn] = useState<PlayerMove>(PlayerMove.X);
   const [winner, setWinner] = useState<GameResultState>("No Winner Yet");
   const [restart, setRestart] = useState(false);
-  const [gameMatrix, setGameMatrix] = useState(
+  const [gameMatrix, setGameMatrix] = useState<GameMatrix>(
     new Array(rowLength)
       .fill(null)
       .map((cell) => new Array(rowLength).fill(null))

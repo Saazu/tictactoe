@@ -25,7 +25,7 @@ function InitGame({
       </div>
       <div>
         <h3 style={{ fontSize: "14px", fontWeight: 700 }}>
-          Current score: Scores: X -{gameHistory.playerXScore} Y -{" "}
+          Current score: Scores: X - {gameHistory.playerXScore} Y -{" "}
           {gameHistory.playerXScore} Draws - {gameHistory.drawScore}
         </h3>
       </div>

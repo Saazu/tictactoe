@@ -14,3 +14,5 @@ export type GameHistory = {
   playerXScore: number;
   drawScore: number;
 };
+
+export type GameMatrix = Array<Array<PlayerMove>>;

@@ -107,9 +107,9 @@ function TicTacToe({
       <div className="game-state">
         <span>
           <h2>Winner: {winner ? winner : "No one yet!"}</h2>
-          <span>
-            Scores: X -{gameHistory.playerXScore} Y - {gameHistory.playerXScore}{" "}
-            Draws - {gameHistory.drawScore}
+          <span style={{ fontSize: "18px", fontWeight: 700 }}>
+            Scores: X - {gameHistory.playerXScore} Y -{" "}
+            {gameHistory.playerXScore} Draws - {gameHistory.drawScore}
           </span>
         </span>
       </div>
