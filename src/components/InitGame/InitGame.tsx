@@ -1,14 +1,21 @@
 import React from "react";
 import "../../common/styles.css";
+import { GameHistory } from "../../common/types.typedef";
 import "./initgame.css";
 
 type InitGameProps = {
   startGame: () => void;
   setBoardSize: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   rowLength: number;
+  gameHistory: GameHistory;
 };
 
-function InitGame({ startGame, setBoardSize, rowLength }: InitGameProps) {
+function InitGame({
+  startGame,
+  setBoardSize,
+  rowLength,
+  gameHistory,
+}: InitGameProps) {
   return (
     <div className="details">
       <h1 className="header">Tic Tac Toe</h1>
@@ -16,7 +23,12 @@ function InitGame({ startGame, setBoardSize, rowLength }: InitGameProps) {
         <p>Select the number of rows and columns and click play to start</p>
         <p>You can create a 3X3, 4X4, 5X5, or 6X6 grid</p>
       </div>
-
+      <div>
+        <h3 style={{ fontSize: "14px", fontWeight: 700 }}>
+          Current score: Scores: X -{gameHistory.playerXScore} Y -{" "}
+          {gameHistory.playerXScore} Draws - {gameHistory.drawScore}
+        </h3>
+      </div>
       <div className="game-setup">
         <label>Number of Rows annd Columns</label>
         <select

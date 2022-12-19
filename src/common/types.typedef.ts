@@ -7,4 +7,10 @@ export type GameResultState =
   | "No Winner Yet"
   | PlayerMove.O
   | PlayerMove.X
-  | "Draw";
+  | "DRAW";
+
+export type GameHistory = {
+  playerOScore: number;
+  playerXScore: number;
+  drawScore: number;
+};

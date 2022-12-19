@@ -3,13 +3,28 @@ import Game from "../Game/Game";
 import useTicTacToe from "../../hooks/useTicTacToe";
 import "./board.css";
 import "../../common/styles.css";
+import { PlayerMove } from "../../common/types.typedef";
+import { useEffect } from "react";
 
 type BoardProps = {
   rowLength: number;
   stopGame: () => void;
+  recordWinner: (winner: PlayerMove | "DRAW") => void;
+  gameHistory: {
+    playerOScore: number;
+    playerXScore: number;
+    drawScore: number;
+  };
+  resetScore: () => void;
 };
 
-function Board({ rowLength, stopGame }: BoardProps) {
+function TicTacToe({
+  rowLength,
+  stopGame,
+  recordWinner,
+  gameHistory,
+  resetScore,
+}: BoardProps) {
   const {
     winner,
     currentTurn,
@@ -19,6 +34,13 @@ function Board({ rowLength, stopGame }: BoardProps) {
     restartGame,
   } = useTicTacToe(rowLength);
   const disableSquare = winner !== "No Winner Yet";
+
+  useEffect(() => {
+    if (winner !== "No Winner Yet") {
+      recordWinner(winner);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [winner]);
 
   function getFontSize(rowLength: number): string {
     switch (rowLength) {
@@ -83,7 +105,13 @@ function Board({ rowLength, stopGame }: BoardProps) {
   return (
     <div className="board">
       <div className="game-state">
-        <h2>Winner: {winner ? winner : "No one yet!"}</h2>
+        <span>
+          <h2>Winner: {winner ? winner : "No one yet!"}</h2>
+          <span>
+            Scores: X -{gameHistory.playerXScore} Y - {gameHistory.playerXScore}{" "}
+            Draws - {gameHistory.drawScore}
+          </span>
+        </span>
       </div>
       {generateBoard()}
       <div className="current-player">
@@ -92,8 +120,11 @@ function Board({ rowLength, stopGame }: BoardProps) {
       <button className="btn" onClick={playNewGame}>
         Restart
       </button>
+      <button className="btn" onClick={resetScore}>
+        Reset Scores
+      </button>
     </div>
   );
 }
 
-export default Board;
+export default TicTacToe;

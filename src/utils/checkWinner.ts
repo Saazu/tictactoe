@@ -55,7 +55,7 @@ export default function checkWinner(
   }
 
   if (moveCount === Math.pow(numCellsPerRow, 2)) {
-    return "Draw";
+    return "DRAW";
   }
 
   return "No Winner Yet";
