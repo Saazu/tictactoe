@@ -1,7 +1,7 @@
 import Square from "../Square/Square";
 import Game from "../Game/Game";
 import useTicTacToe from "../../hooks/useTicTacToe";
-import "./board.css";
+import "./tictactoe.css";
 import "../../common/styles.css";
 import { PlayerMove } from "../../common/types.typedef";
 import { useEffect } from "react";
