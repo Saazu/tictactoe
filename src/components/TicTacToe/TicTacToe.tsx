@@ -57,6 +57,21 @@ function TicTacToe({
     }
   }
 
+  function getMobileFontSize(rowLength: number): string {
+    switch (rowLength) {
+      case 3:
+        return "2rem";
+      case 4:
+        return "1.75rem";
+      case 5:
+        return "1.5rem";
+      case 6:
+        return "1.25rem";
+      default:
+        return "2rem";
+    }
+  }
+
   function generateBoardStyles() {
     return {
       display: "grid",
@@ -66,8 +81,13 @@ function TicTacToe({
       width: "96vw",
       maxHeight: "600px",
       height: "96vw",
-      margin: "3rem auto",
-      fontSize: getFontSize(rowLength),
+      margin: "1rem auto",
+      "@media only screen and (maxWidth: 812px)": {
+        fontSize: getMobileFontSize(rowLength),
+      },
+      "@media only screen and (minWidth: 812px)": {
+        fontSize: getFontSize(rowLength),
+      },
     };
   }
 
