@@ -5,6 +5,7 @@ import {
   PlayerMove,
   GameMatrix,
 } from "../common/types.typedef";
+import cloneDeep from "lodash.clonedeep";
 
 /**
  *
@@ -33,7 +34,7 @@ const useTicTacToe = (rowLength: number) => {
       currentColumn,
       currentMoveCount,
     );
-    setGameMatrix(gameMatrix);
+    setGameMatrix(cloneDeep(gameMatrix));
     setCurrentTurn((currentTurn) =>
       currentTurn === PlayerMove.X ? PlayerMove.O : PlayerMove.X,
     );
