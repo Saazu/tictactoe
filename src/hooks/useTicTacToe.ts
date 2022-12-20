@@ -1,6 +1,5 @@
 import { useState } from "react";
 import checkWinner from "../utils/checkWinner";
-import useLocalStorage from "./useLocalStorage";
 import {
   GameResultState,
   PlayerMove,
@@ -21,7 +20,6 @@ const useTicTacToe = (rowLength: number) => {
       .fill(null)
       .map((cell) => new Array(rowLength).fill(null)),
   );
-  const [, setLocalStorageState] = useLocalStorage("tictactoe", null);
   const [moveCount, setMoveCount] = useState(0);
 
   function handlePlayerMove(currentRow: number, currentColumn: number) {
@@ -35,14 +33,11 @@ const useTicTacToe = (rowLength: number) => {
       currentColumn,
       currentMoveCount,
     );
-    // TO DO: update function to use deep copy of matrix
-
     setGameMatrix(gameMatrix);
     setCurrentTurn((currentTurn) =>
       currentTurn === PlayerMove.X ? PlayerMove.O : PlayerMove.X,
     );
     setWinner(winner);
-    setLocalStorageState({ gameMatrix, winner, currentTurn, moveCount });
   }
 
   function restartGame() {
