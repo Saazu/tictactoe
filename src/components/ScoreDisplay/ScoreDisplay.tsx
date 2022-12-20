@@ -7,6 +7,13 @@ type ScoreDisplayProps = {
 };
 
 function ScoreDisplay({ scoreHistory }: ScoreDisplayProps) {
+  function formatPlural(numWins: number, str: string): string {
+    if (numWins == 1) {
+      return str;
+    }
+    return `${str}s`;
+  }
+
   return (
     <div className="score card">
       <div>
@@ -14,9 +21,18 @@ function ScoreDisplay({ scoreHistory }: ScoreDisplayProps) {
       </div>
       <div className="score-list">
         <ul>
-          <li>Player X: {scoreHistory.playerXScore} Win</li>
-          <li>Player O: {scoreHistory.playerXScore} Wins</li>
-          <li>Draws: {scoreHistory.drawScore}</li>
+          <li>
+            Player X: {scoreHistory.playerXScore}{" "}
+            {formatPlural(scoreHistory.playerXScore, "win")}
+          </li>
+          <li>
+            Player O: {scoreHistory.playerOScore}{" "}
+            {formatPlural(scoreHistory.playerOScore, "win")}
+          </li>
+          <li>
+            Draws: {scoreHistory.drawScore}{" "}
+            {formatPlural(scoreHistory.drawScore, "draw")}
+          </li>
         </ul>
       </div>
     </div>
