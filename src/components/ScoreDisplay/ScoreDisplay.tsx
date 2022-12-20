@@ -8,7 +8,7 @@ type ScoreDisplayProps = {
 
 function ScoreDisplay({ scoreHistory }: ScoreDisplayProps) {
   function formatPlural(numWins: number, str: string): string {
-    if (numWins == 1) {
+    if (numWins === 1) {
       return str;
     }
     return `${str}s`;

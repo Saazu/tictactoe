@@ -47,6 +47,7 @@ ul > li {
   justify-content: center;
   align-content: center;
   text-align: center;
+  padding: 0rem 0.5rem;
 }
 
 .actions {

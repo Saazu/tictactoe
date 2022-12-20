@@ -44,11 +44,11 @@ function TicTacToe({
       case 3:
         return "2.2rem";
       case 4:
-        return "1.6rem";
+        return "1.4rem";
       case 5:
-        return "1.3rem";
+        return "1.2rem";
       case 6:
-        return "1rem";
+        return "0.8rem";
       default:
         return "3rem";
     }
@@ -58,11 +58,11 @@ function TicTacToe({
     return {
       display: "grid",
       gridTemplate: `repeat(${rowLength}, 1fr) / repeat(${rowLength}, 1fr)`,
-      gridGap: "1.5vw",
-      maxWidth: "700px",
-      width: "96vw",
+      gridGap: "1vw",
+      maxWidth: "600px",
+      width: "84vw",
       maxHeight: "600px",
-      height: "96vw",
+      height: "84vw",
       margin: "1rem auto",
       fontSize: getFontSize(rowLength),
     };
@@ -101,6 +101,7 @@ function TicTacToe({
 
   return (
     <div className="board">
+      <h1 className="header">Tic Tac Toe</h1>
       <div className="flex-row">
         <div className="flex-row">
           <ScoreDisplay scoreHistory={gameHistory} />
@@ -108,7 +109,7 @@ function TicTacToe({
       </div>
 
       <div role="alert">
-        {winner ? (
+        {winner !== "No Winner Yet" ? (
           <h3>Winner: {winner}</h3>
         ) : (
           <h3>Current Player: {currentTurn}</h3>
