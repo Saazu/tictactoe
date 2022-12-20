@@ -19,12 +19,10 @@ const useTicTacToe = (rowLength: number) => {
   const [gameMatrix, setGameMatrix] = useState<GameMatrix>(
     new Array(rowLength)
       .fill(null)
-      .map((cell) => new Array(rowLength).fill(null))
+      .map((cell) => new Array(rowLength).fill(null)),
   );
-  const [state, setLocalStorageState] = useLocalStorage("tictactoe", null);
+  const [, setLocalStorageState] = useLocalStorage("tictactoe", null);
   const [moveCount, setMoveCount] = useState(0);
-
-  console.log(state);
 
   function handlePlayerMove(currentRow: number, currentColumn: number) {
     gameMatrix[currentRow][currentColumn] = currentTurn;
@@ -35,13 +33,13 @@ const useTicTacToe = (rowLength: number) => {
       rowLength,
       currentRow,
       currentColumn,
-      currentMoveCount
+      currentMoveCount,
     );
     // TO DO: update function to use deep copy of matrix
 
     setGameMatrix(gameMatrix);
     setCurrentTurn((currentTurn) =>
-      currentTurn === PlayerMove.X ? PlayerMove.O : PlayerMove.X
+      currentTurn === PlayerMove.X ? PlayerMove.O : PlayerMove.X,
     );
     setWinner(winner);
     setLocalStorageState({ gameMatrix, winner, currentTurn, moveCount });

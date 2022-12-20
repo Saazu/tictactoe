@@ -1,3 +1,9 @@
+h3 {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+}
+
 .rows-container {
   display: grid;
   box-sizing: border-box;
@@ -13,9 +19,24 @@
 
 
 .game-state {
+  display: flex;
+  flex-direction: 'column';
+  justify-content: center;
+  align-content: center;
+}
+
+.player {
+  font-weight: 700;
+}
+
+.score-group {
+  margin-right: 1rem;
+}
+
+.btn-wrapper {
   margin: 1rem 0rem;
 }
 
-.current-player {
-
+.board {
+ width: 100%;
 }

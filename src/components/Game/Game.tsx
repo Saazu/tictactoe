@@ -46,6 +46,7 @@ function Game() {
           gameHistory={gameHistory}
           startGame={startGame}
           setBoardSize={setBoardSize}
+          resetScore={resetScore}
           rowLength={rowLength}
         />
       )}

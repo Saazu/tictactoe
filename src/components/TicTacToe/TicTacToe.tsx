@@ -3,18 +3,15 @@ import Game from "../Game/Game";
 import useTicTacToe from "../../hooks/useTicTacToe";
 import "./tictactoe.css";
 import "../../common/styles.css";
-import { PlayerMove } from "../../common/types.typedef";
+import { GameHistory, PlayerMove } from "../../common/types.typedef";
 import { useEffect } from "react";
+import ScoreDisplay from "../ScoreDisplay/ScoreDisplay";
 
 type BoardProps = {
   rowLength: number;
   stopGame: () => void;
   recordWinner: (winner: PlayerMove | "DRAW") => void;
-  gameHistory: {
-    playerOScore: number;
-    playerXScore: number;
-    drawScore: number;
-  };
+  gameHistory: GameHistory;
   resetScore: () => void;
 };
 
@@ -45,30 +42,15 @@ function TicTacToe({
   function getFontSize(rowLength: number): string {
     switch (rowLength) {
       case 3:
-        return "3rem";
+        return "2.2rem";
       case 4:
-        return "2.5rem";
+        return "1.6rem";
       case 5:
-        return "2rem";
+        return "1.3rem";
       case 6:
-        return "1.5rem";
+        return "1rem";
       default:
         return "3rem";
-    }
-  }
-
-  function getMobileFontSize(rowLength: number): string {
-    switch (rowLength) {
-      case 3:
-        return "2rem";
-      case 4:
-        return "1.75rem";
-      case 5:
-        return "1.5rem";
-      case 6:
-        return "1.25rem";
-      default:
-        return "2rem";
     }
   }
 
@@ -82,12 +64,7 @@ function TicTacToe({
       maxHeight: "600px",
       height: "96vw",
       margin: "1rem auto",
-      "@media only screen and (maxWidth: 812px)": {
-        fontSize: getMobileFontSize(rowLength),
-      },
-      "@media only screen and (minWidth: 812px)": {
-        fontSize: getFontSize(rowLength),
-      },
+      fontSize: getFontSize(rowLength),
     };
   }
 
@@ -110,7 +87,7 @@ function TicTacToe({
             disable={disableSquare}
             setValue={handlePlayerMove}
             textSize={getFontSize(rowLength)}
-          />
+          />,
         );
       }
       board.push(row);
@@ -124,25 +101,29 @@ function TicTacToe({
 
   return (
     <div className="board">
-      <div className="game-state">
-        <span>
-          <h2>Winner: {winner ? winner : "No one yet!"}</h2>
-          <span style={{ fontSize: "18px", fontWeight: 700 }}>
-            Scores: X - {gameHistory.playerXScore} Y -{" "}
-            {gameHistory.playerXScore} Draws - {gameHistory.drawScore}
-          </span>
-        </span>
+      <div className="flex-row">
+        <div className="flex-row">
+          <ScoreDisplay scoreHistory={gameHistory} />
+        </div>
       </div>
-      {generateBoard()}
-      <div className="current-player">
-        <h3>Current Player: {currentTurn}</h3>
+
+      <div role="alert">
+        {winner ? (
+          <h3>Winner: {winner}</h3>
+        ) : (
+          <h3>Current Player: {currentTurn}</h3>
+        )}
       </div>
-      <button className="btn" onClick={playNewGame}>
-        Restart
-      </button>
-      <button className="btn" onClick={resetScore}>
-        Reset Scores
-      </button>
+
+      <div className="flex-row">
+        <button className="btn" onClick={playNewGame}>
+          Restart
+        </button>
+        <button className="btn" onClick={resetScore}>
+          Reset Scores
+        </button>
+      </div>
+      <div className="flex-row board">{generateBoard()}</div>
     </div>
   );
 }

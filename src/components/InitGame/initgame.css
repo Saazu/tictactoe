@@ -1,16 +1,68 @@
-.game-setup {
-  margin: 1rem 0rem;
-}
 
 .matrix-select {
-  text-align: center;
   margin-left: 1rem;
 }
 
 select {
   font-size: 14px;
   width: 4rem;
-  text-align: right;
   height: 1.5rem;
+} 
+
+.card {
+  min-width: 200px;
+  box-shadow: 0px 0px 4px -1px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  padding: 1rem 3rem;
+  margin: 1rem 0rem
 }
 
+.instructions {
+  text-align: left;
+}
+
+.score {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.score-list {
+  text-align: left;
+}
+
+ul > li {
+  list-style: none;
+}
+
+.instructions > ul > li {
+  list-style:disc;
+}
+
+.details {
+  display: flex;
+  flex-direction: 'column';
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  flex-direction: 'row';
+  justify-content: center;
+  align-content: center;
+  padding: 1rem;
+}
+
+.section-header {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.setup {
+  margin: 0.5rem;
+}
