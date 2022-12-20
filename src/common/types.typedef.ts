@@ -3,11 +3,7 @@ export enum PlayerMove {
   O = "O",
 }
 
-export type GameResultState =
-  | "No Winner Yet"
-  | PlayerMove.O
-  | PlayerMove.X
-  | "DRAW";
+export type GameResultState = PlayerMove | "No Winner Yet" | "DRAW";
 
 export type GameHistory = {
   playerOScore: number;
