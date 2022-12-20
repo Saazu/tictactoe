@@ -4,7 +4,7 @@ import { PlayerMove } from "../common/types.typedef";
 const useTicTacToeHistory = () => {
   const [playerScoreHistory, setPlayerScoreHistory] = useLocalStorage(
     "ttt-score",
-    { X: 0, O: 0, DRAW: 0 }
+    { X: 0, O: 0, DRAW: 0 },
   );
 
   function recordWinner(winner: PlayerMove | "DRAW") {

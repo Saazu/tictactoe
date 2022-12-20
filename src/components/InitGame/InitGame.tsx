@@ -28,7 +28,7 @@ function InitGame({
           <p className="section-header">Rules</p>
           <ul>
             <li>
-              Select the number of rows and columns and click play to start
+              Select the number of rows and columns and click 'Play' to start
             </li>
             <li>You can create a 3X3, 4X4, 5X5, or 6X6 grid</li>
           </ul>
